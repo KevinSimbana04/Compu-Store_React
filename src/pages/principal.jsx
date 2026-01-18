@@ -1,10 +1,14 @@
+import Footer from "../components/footer"
 import Header from "../components/header"
+import Carrusel from "../components/carrusel"
+
 
 function Principal(){
 return(
     <>
         <Header/>
-        <h1>Hola Mundo</h1>
+        <Carrusel/>
+        <Footer/>
     </>
 )
 }

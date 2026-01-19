@@ -23,7 +23,9 @@ function Header(){
                     </div>
 
                     <div className="flex gap-4 px-5">
+                        <Link to={'/login'}>
                         <img src={login} alt="Login" className="w-16 h-16 md:w-20 md:h-20 drop-shadow-[0_3px_1.5px_#5a5a5a]"/>
+                        </Link>
                         <img src={carrito} alt="Carrito" className="w-16 h-16 md:w-20 md:h-20 drop-shadow-[0_3px_1.5px_#5a5a5a]"/>
                     </div>
                 </div>

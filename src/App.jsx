@@ -5,7 +5,7 @@ import Nosotros from './pages/nosotros'
 import Productos from './pages/productos'
 import Contactos from './pages/contactos'
 import Registro from './pages/registro'
-
+import Login from './pages/login'
 function App() {
   return (
     <BrowserRouter>
@@ -15,6 +15,7 @@ function App() {
         <Route path='/productos' element={<Productos/>}/>
         <Route path='/contactos' element={<Contactos/>}/>
         <Route path='/registro' element={<Registro/>}/>
+        <Route path='/login' element={<Login/>}/>
       </Routes>
     </BrowserRouter>
   )

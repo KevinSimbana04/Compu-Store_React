@@ -14,7 +14,7 @@ export const CartProvider = ({ children }) => {
     const [cartItems, setCartItems] = useState([]);
     const [isCartOpen, setIsCartOpen] = useState(false);
 
-    // Load from localStorage on mount
+    // Cargar desde localStorage al montar el componente
     useEffect(() => {
         try {
             const storedCart = JSON.parse(localStorage.getItem('carrito')) || [];
@@ -24,7 +24,7 @@ export const CartProvider = ({ children }) => {
         }
     }, []);
 
-    // Save to localStorage whenever cart changes
+    // Guardar en localStorage cuando cambie el carrito
     useEffect(() => {
         localStorage.setItem('carrito', JSON.stringify(cartItems));
     }, [cartItems]);
@@ -33,15 +33,15 @@ export const CartProvider = ({ children }) => {
         setCartItems(prev => {
             const existing = prev.find(item => item.id === product.id);
             if (existing) {
-                // If exists, just increment quantity
+                // Si existe, incrementa la cantidad
                 return prev.map(item =>
                     item.id === product.id ? { ...item, quantity: item.quantity + 1 } : item
                 );
             }
-            // If new, add with quantity 1
+            // Si es nuevo, agregar con cantidad 1
             return [...prev, { ...product, quantity: 1 }];
         });
-        setIsCartOpen(true); // Open cart when adding
+        setIsCartOpen(true); // Abrir carrito al agregar
     };
 
     const removeFromCart = (id) => {

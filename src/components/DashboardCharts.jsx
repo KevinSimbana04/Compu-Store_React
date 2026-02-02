@@ -26,8 +26,8 @@ ChartJS.register(
 );
 
 export const SalesChart = () => {
-    // Dummy data replicating logic from js/dashboard.js
-    const ventas = [150.50, 200.00, 350.75, 120.20, 500.00, 450.00]; // Sample totals
+    // Datos de prueba replicando la lógica de dashboard.js
+    const ventas = [150.50, 200.00, 350.75, 120.20, 500.00, 450.00]; // Totales de ejemplo
     const labels = ventas.map((_, i) => `Venta ${i + 1}`);
 
     const data = {
@@ -59,7 +59,7 @@ export const SalesChart = () => {
 };
 
 export const ProductsChart = () => {
-    // Dummy data replicating logic
+    // Datos de prueba replicando la lógica
     const labels = ['Laptop', 'PC Gamer', 'Mouse', 'Teclado', 'Monitor'];
     const dataValues = [5, 3, 12, 8, 4];
 

@@ -3,6 +3,7 @@ import HeaderPrivate from "../components/componentsprivate/headerprivate";
 import AsidePrivate from "../components/componentsprivate/asideprivate";
 import { getSales } from '../Services/saleServices';
 import { getAllProducts } from '../Services/productServices';
+// Importaciones de Chart.js para gráficos
 import {
     Chart as ChartJS,
     CategoryScale,
@@ -37,6 +38,7 @@ const Dashboard = () => {
     const [cargando, setCargando] = useState(true);
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
+    // Efecto: Cargar datos del dashboard al montar
     useEffect(() => {
         const cargarDashboard = async () => {
             setCargando(true);
@@ -74,7 +76,7 @@ const Dashboard = () => {
         datasets: [
             {
                 label: 'Ventas Mensuales',
-                data: [30, 45, 60, 50, 70, 90, 100], // Static placeholder data
+                data: [30, 45, 60, 50, 70, 90, 100], // Datos de ejemplo estáticos para visualización
                 borderColor: 'rgb(59, 130, 246)',
                 backgroundColor: 'rgba(59, 130, 246, 0.5)',
                 tension: 0.3,
@@ -87,7 +89,7 @@ const Dashboard = () => {
         datasets: [
             {
                 label: '# de Ventas',
-                data: [12, 19, 3, 5], // Static placeholder data
+                data: [12, 19, 3, 5], // Datos de ejemplo estáticos
                 backgroundColor: [
                     'rgba(255, 99, 132, 0.8)',
                     'rgba(54, 162, 235, 0.8)',

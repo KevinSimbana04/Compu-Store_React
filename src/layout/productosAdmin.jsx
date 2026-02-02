@@ -1,3 +1,4 @@
+// Importaciones de React y librerías externas
 import React, { useState, useEffect } from 'react';
 import Swal from 'sweetalert2';
 import HeaderPrivate from "../components/componentsprivate/headerprivate";
@@ -14,10 +15,11 @@ const ProductosAdmin = () => {
         stock: '',
         imagen: ''
     });
-    const [idEditar, setIdEditar] = useState(null); // This will hold the Document ID (string)
+    // Estado para edición: almacena el ID del documento de Firestore
+    const [idEditar, setIdEditar] = useState(null);
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-    // Cargar productos
+    // Efecto: Cargar productos al montar el componente
     useEffect(() => {
         cargarProductos();
     }, []);
@@ -46,7 +48,7 @@ const ProductosAdmin = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        // Convert numeric fields
+        // Convertir campos numéricos antes de enviar
         const payload = {
             ...formData,
             precio: parseFloat(formData.precio),
@@ -55,7 +57,7 @@ const ProductosAdmin = () => {
 
         try {
             if (idEditar) {
-                // Update
+                // Actualizar producto existente
                 await updateProduct(idEditar, payload);
                 Swal.fire({
                     icon: 'success',

@@ -1,3 +1,4 @@
+// Importación de hooks y assets
 import { useState, useEffect } from 'react'
 import banner1 from "../assets/img/banner1.jpg"
 import banner2 from "../assets/img/banner2.jpg"
@@ -8,26 +9,31 @@ import proyector from "../assets/img/proyecate3.png"
 import consola from "../assets/img/consocate4.png"
 import { Link } from 'react-router-dom'
 
+// Componente Carrusel: Slider de imágenes para el inicio
 function Carrusel() {
+    // Estado para controlar el índice de la imagen actual
     const [currentIndex, setCurrentIndex] = useState(0);
     const banners = [banner1, banner2];
 
+    // Función para retroceder a la imagen anterior
     const prevSlide = () => {
         const isFirstSlide = currentIndex === 0;
         const newIndex = isFirstSlide ? banners.length - 1 : currentIndex - 1;
         setCurrentIndex(newIndex);
     };
 
+    // Función para avanzar a la siguiente imagen
     const nextSlide = () => {
         const isLastSlide = currentIndex === banners.length - 1;
         const newIndex = isLastSlide ? 0 : currentIndex + 1;
         setCurrentIndex(newIndex);
     };
 
+    // Efecto para el cambio automático de diapositivas
     useEffect(() => {
         const interval = setInterval(() => {
             nextSlide();
-        }, 5000); // Auto-slide every 5 seconds
+        }, 5000); // Cambio automático cada 5 segundos
         return () => clearInterval(interval);
     }, [currentIndex]);
 

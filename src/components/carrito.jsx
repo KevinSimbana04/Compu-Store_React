@@ -27,7 +27,7 @@ const Carrito = () => {
             toggleCart();
         } catch (error) {
             console.error(error);
-            // Error message from service usually contains details about stock
+            // El mensaje de error del servicio suele contener detalles sobre el stock
             Swal.fire('Error', error.message || 'No se pudo procesar la compra.', 'error');
         } finally {
             setProcessing(false);
@@ -36,13 +36,13 @@ const Carrito = () => {
 
     return (
         <>
-            {/* Overlay */}
+            {/* Fondo oscuro (Overlay) */}
             <div
                 className={`fixed inset-0 bg-black/30 backdrop-blur-sm z-[2000] transition-opacity duration-300 ${isCartOpen ? 'opacity-100 visible' : 'opacity-0 invisible'}`}
                 onClick={toggleCart}
             ></div>
 
-            {/* Sidebar */}
+            {/* Menú Lateral (Sidebar) */}
             <div className={`fixed top-0 right-0 h-full w-[350px] bg-white shadow-2xl z-[2001] transition-transform duration-300 transform ${isCartOpen ? 'translate-x-0' : 'translate-x-full'} flex flex-col`}>
                 <div className="p-4 border-b border-gray-200 flex justify-between items-center bg-gray-50">
                     <h2 className="text-xl font-bold text-gray-800 flex items-center gap-2">

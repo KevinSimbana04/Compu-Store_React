@@ -18,7 +18,7 @@ const HeaderPrivate = ({ onToggleMenu }) => {
                         });
                     }
                 } catch (error) {
-                    console.error("Error fetching profile:", error);
+                    console.error("Error al obtener el perfil:", error);
                 }
             }
         });

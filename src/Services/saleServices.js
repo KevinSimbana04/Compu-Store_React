@@ -4,7 +4,7 @@ import { collection, getDocs, addDoc, runTransaction, doc } from "firebase/fires
 const VENTAS_COLLECTION = "ventas";
 const PRODUCTOS_COLLECTION = "productos";
 
-// Get all sales
+// Obtener todas las ventas
 export const getSales = async () => {
     try {
         const querySnapshot = await getDocs(collection(db, VENTAS_COLLECTION));
@@ -12,21 +12,21 @@ export const getSales = async () => {
             idStr: doc.id,
             ...doc.data()
         }));
-        // Sort descending by timestamp (assuming `id` or `timestamp` field exists)
+        // Ordenar descendente por timestamp
         return sales.sort((a, b) => b.id - a.id);
     } catch (error) {
-        console.error("Error fetching sales:", error);
+        console.error("Error al obtener ventas:", error);
         throw error;
     }
 };
 
-// Register a new sale (Transaction: Add Sale + Deduct Stock)
+// Registrar nueva venta (Transacción: Agregar Venta + Descontar Stock)
 // items: Array of { idStr (firestore doc id), nombre, precio, quantity, ... }
 export const registerSale = async (items) => {
     try {
         await runTransaction(db, async (transaction) => {
 
-            // 1. Read all product docs to ensure stock allows it
+            // 1. Leer todos los docs de productos para asegurar stock suficiente
             for (const item of items) {
                 if (!item.idStr) throw new Error(`Producto ${item.nombre} sin ID válido`);
 
@@ -42,33 +42,32 @@ export const registerSale = async (items) => {
                     throw new Error(`Stock insuficiente para "${item.nombre}". Disponible: ${currentStock}`);
                 }
 
-                // 2. Queue Update: Deduct stock
+                // 2. Encolar Actualización: Descontar stock
                 transaction.update(productRef, { stock: currentStock - item.quantity });
             }
 
-            // 3. Queue Creates: Add Sale Records
-            // We can add one record per item, or one record per "Order". 
-            // The previous logic added one record per item. We will stick to that to match the UI.
+            // 3. Encolar Creación: Agregar Registros de Venta
+            // Podemos agregar un registro por ítem. Mantendremos eso para la UI.
             const salesCollectionRef = collection(db, VENTAS_COLLECTION);
 
             items.forEach(item => {
                 const newSale = {
-                    id: Date.now() + Math.random(), // Numeric ID for sorting/display compatibility
+                    id: Date.now() + Math.random(), // ID numérico para compatibilidad de orden/visualización
                     fecha: new Date().toLocaleDateString() + ' ' + new Date().toLocaleTimeString(),
                     producto: item.nombre,
                     cantidad: item.quantity,
                     precio: item.precio,
                     total: (item.precio * item.quantity),
-                    timestamp: new Date() // Firestore timestamp for better querying
+                    timestamp: new Date() // Timestamp de Firestore para consultas optimizadas
                 };
-                const newDocRef = doc(salesCollectionRef); // Create new doc ref
+                const newDocRef = doc(salesCollectionRef); // Crear referencia de nuevo documento
                 transaction.set(newDocRef, newSale);
             });
         });
 
         return true;
     } catch (error) {
-        console.error("Transaction failed: ", error);
+        console.error("Falló la transacción: ", error);
         throw error;
     }
 };

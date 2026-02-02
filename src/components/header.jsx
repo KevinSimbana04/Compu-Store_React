@@ -1,3 +1,4 @@
+// Importación de componentes y assets
 import { Link } from "react-router-dom"
 import { useCart } from '../context/CartContext';
 import carrito from "../assets/carrito-logo.png"
@@ -7,7 +8,9 @@ import productosi from "../assets/img/productos-icon.png"
 import nosotrosi from "../assets/img/nosotros-icono.png"
 import contactosi from "../assets/img/contacto-icono.png"
 
+// Componente Header: Barra de navegación superior
 function Header() {
+    // Uso del contexto del carrito para mostrar cantidad de items
     const { toggleCart, cartItems } = useCart();
     return (
         <>

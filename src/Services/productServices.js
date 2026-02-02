@@ -3,7 +3,7 @@ import { collection, getDocs, addDoc, updateDoc, deleteDoc, doc, writeBatch } fr
 
 const COLLECTION_NAME = "productos";
 
-// Default initial products
+// Productos iniciales por defecto
 const defaultProducts = [
     { id: 1, nombre: "ASUS TUF A15", precio: 1299.99, categoria: "Laptop", stock: 10, imagen: "/img/1-1.png" },
     { id: 2, nombre: "Lenovo Legion 5", precio: 1399.99, categoria: "Laptop", stock: 10, imagen: "/img/2-2.png" },
@@ -22,19 +22,19 @@ const defaultProducts = [
     { id: 15, nombre: "Memoria RAM 16GB", precio: 89.99, categoria: "Accesorios", stock: 10, imagen: "/img/18-18.jpeg" }
 ];
 
-// Get all products
+// Obtener todos los productos
 export const getAllProducts = async () => {
     try {
         const querySnapshot = await getDocs(collection(db, COLLECTION_NAME));
         const products = querySnapshot.docs.map(doc => ({
-            idStr: doc.id, // Firestore Doc ID
+            idStr: doc.id, // ID del documento de Firestore
             ...doc.data()
         }));
 
-        // Sorting by custom numeric ID if present, otherwise by name
+        // Ordenar por ID numérico personalizado si existe
         return products.sort((a, b) => a.id - b.id);
     } catch (error) {
-        console.error("Error fetching products:", error);
+        console.error("Error al obtener productos:", error);
         throw error;
     }
 };
@@ -45,7 +45,7 @@ export const addProduct = async (productData) => {
         const docRef = await addDoc(collection(db, COLLECTION_NAME), productData);
         return docRef.id;
     } catch (error) {
-        console.error("Error adding product:", error);
+        console.error("Error al agregar producto:", error);
         throw error;
     }
 };
@@ -56,7 +56,7 @@ export const updateProduct = async (docId, updatedData) => {
         const productRef = doc(db, COLLECTION_NAME, docId);
         await updateDoc(productRef, updatedData);
     } catch (error) {
-        console.error("Error updating product:", error);
+        console.error("Error al actualizar producto:", error);
         throw error;
     }
 };
@@ -66,12 +66,12 @@ export const deleteProduct = async (docId) => {
     try {
         await deleteDoc(doc(db, COLLECTION_NAME, docId));
     } catch (error) {
-        console.error("Error deleting product:", error);
+        console.error("Error al eliminar producto:", error);
         throw error;
     }
 };
 
-// Seed initial products if DB is empty
+// Sembrar productos iniciales si la BD está vacía
 export const seedProductsIfEmpty = async () => {
     try {
         const products = await getAllProducts();
@@ -91,7 +91,7 @@ export const seedProductsIfEmpty = async () => {
         }
         return false;
     } catch (error) {
-        console.error("Error seeding products:", error);
+        console.error("Error al sembrar productos:", error);
         return false;
     }
 };

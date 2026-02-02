@@ -6,7 +6,7 @@ import Logo2 from "../assets/img/logo2.ico"
 import { registrarUsuario } from '../services/authServices';
 
 function Registro() {
-    // Definición de estados (¡IMPORTANTE: No borrar!)
+    // Definición de estados
     const [nombre, setNombre] = useState('');
     const [apellido, setApellido] = useState('');
     const [cedula, setCedula] = useState('');
@@ -71,7 +71,7 @@ function Registro() {
 
             <div className="bg-white/90 backdrop-blur-md p-8 md:p-10 rounded-[25px] shadow-[0_20px_60px_rgba(0,0,0,0.2)] w-full max-w-[800px] animate-fade-in-up flex flex-col md:flex-row gap-8 items-center">
 
-                {/* Columna Izquierda: Logo y Bienvenida (Visible en Desktop) */}
+                {/* Columna Izquierda: Logo y Bienvenida */}
                 <div className="hidden md:flex flex-col items-center justify-center w-1/3 text-center border-r border-gray-200 pr-8">
                     <div className="w-[120px] h-[120px] rounded-full bg-white flex items-center justify-center shadow-lg mb-6 animate-pulse p-2">
                         <img src={Logo2} alt="Logo" className="w-full h-full object-contain" />

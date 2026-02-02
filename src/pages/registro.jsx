@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import Home from "../assets/img/home-icono.png"
 import Logo2 from "../assets/img/logo2.ico"
-import { registrarUsuario } from '../Services/authServices';
+import { registrarUsuario } from '../services/authServices';
 
 function Registro() {
     // Definición de estados (¡IMPORTANTE: No borrar!)

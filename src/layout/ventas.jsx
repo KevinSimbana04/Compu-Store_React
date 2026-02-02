@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react';
 import Swal from 'sweetalert2';
 import HeaderPrivate from "../components/componentsprivate/headerprivate";
 import AsidePrivate from "../components/componentsprivate/asideprivate";
-import { getSales, registerSale } from '../Services/saleServices';
-import { getAllProducts } from '../Services/productServices';
+import { getSales, registerSale } from '../services/saleServices';
+import { getAllProducts } from '../services/productServices';
 
 const Ventas = () => {
     const [productos, setProductos] = useState([]);

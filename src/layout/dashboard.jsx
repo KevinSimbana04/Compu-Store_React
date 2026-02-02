@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import HeaderPrivate from "../components/componentsprivate/headerprivate";
 import AsidePrivate from "../components/componentsprivate/asideprivate";
-import { getSales } from '../Services/saleServices';
-import { getAllProducts } from '../Services/productServices';
+import { getSales } from '../services/saleServices';
+import { getAllProducts } from '../services/productServices';
 // Importaciones de Chart.js para gráficos
 import {
     Chart as ChartJS,
@@ -118,7 +118,7 @@ const Dashboard = () => {
                     <p className="text-slate-500">Resumen general de la tienda</p>
                 </section>
 
-                {/* Cards Stats */}
+                {/* Cartas de estado*/}
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
                     <div className="bg-white p-6 rounded-2xl shadow-sm border-l-4 border-blue-500 flex items-center justify-between">
                         <div>
@@ -151,7 +151,7 @@ const Dashboard = () => {
                     </div>
                 </div>
 
-                {/* Charts */}
+                {/* Gráficos */}
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
                     <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 h-[400px]">
                         <h3 className="text-lg font-bold text-slate-700 mb-4">Tendencia de Ventas</h3>
@@ -167,7 +167,7 @@ const Dashboard = () => {
                     </div>
                 </div>
 
-                {/* Recent Sales Table */}
+                {/* Tabla de ventas recientes */}
                 <section className="bg-white p-6 rounded-2xl shadow-sm border border-slate-100">
                     <h3 className="text-xl font-bold text-slate-700 mb-4">Ventas Recientes</h3>
                     <div className="overflow-x-auto">

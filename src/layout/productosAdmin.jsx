@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import Swal from 'sweetalert2';
 import HeaderPrivate from "../components/componentsprivate/headerprivate";
 import AsidePrivate from "../components/componentsprivate/asideprivate";
-import { getAllProducts, addProduct, updateProduct, deleteProduct } from '../Services/productServices';
+import { getAllProducts, addProduct, updateProduct, deleteProduct } from '../services/productServices';
 
 const ProductosAdmin = () => {
     const [productos, setProductos] = useState([]);

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import HeaderPrivate from "../components/componentsprivate/headerprivate";
 import AsidePrivate from "../components/componentsprivate/asideprivate";
 import { auth } from "../firebase/firebase";
-import { obtenerPerfilUsuario, actualizarPerfilUsuario, actualizarContrasenaUsuario, cerrarSesion } from "../Services/authServices";
+import { obtenerPerfilUsuario, actualizarPerfilUsuario, actualizarContrasenaUsuario, cerrarSesion } from "../services/authServices";
 import Swal from 'sweetalert2';
 import { useNavigate } from 'react-router-dom';
 

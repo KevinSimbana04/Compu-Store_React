@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Swal from 'sweetalert2';
 import { useCart } from '../context/CartContext';
-import { registerSale } from '../Services/saleServices';
+import { registerSale } from '../services/saleServices';
 
 const Carrito = () => {
     const { cartItems, removeFromCart, updateQuantity, clearCart, isCartOpen, toggleCart } = useCart();
@@ -36,7 +36,7 @@ const Carrito = () => {
 
     return (
         <>
-            {/* Fondo oscuro (Overlay) */}
+            {/* Fondo Borroso */}
             <div
                 className={`fixed inset-0 bg-black/30 backdrop-blur-sm z-[2000] transition-opacity duration-300 ${isCartOpen ? 'opacity-100 visible' : 'opacity-0 invisible'}`}
                 onClick={toggleCart}

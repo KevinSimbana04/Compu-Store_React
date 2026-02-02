@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Swal from 'sweetalert2';
 import { auth } from '../../firebase/firebase';
-import { obtenerPerfilUsuario } from '../../Services/authServices';
+import { obtenerPerfilUsuario } from '../../services/authServices';
 
 const HeaderPrivate = ({ onToggleMenu }) => {
     const [userData, setUserData] = useState({ nombre: 'Usuario', rol: 'Administrador' });

@@ -3,7 +3,7 @@ import Header from "../components/header";
 import Footer from "../components/footer";
 import { useCart } from '../context/CartContext';
 import Swal from 'sweetalert2';
-import { getAllProducts, seedProductsIfEmpty } from '../Services/productServices';
+import { getAllProducts, seedProductsIfEmpty } from '../services/productServices';
 
 function Productos() {
     const [productos, setProductos] = useState([]);

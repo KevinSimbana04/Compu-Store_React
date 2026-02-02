@@ -1,90 +1,221 @@
-Documentación del Proyecto Compu-Store
-Esta documentación detalla la estructura, funcionamiento y tecnologías utilizadas en el proyecto Compu-Store, una aplicación web de comercio electrónico desarrollada con React.
+# 🖥️ Compu-Store
 
-1. Descripción General
-Compu-Store es una plataforma de e-commerce que permite a los usuarios navegar por un catálogo de productos tecnológicos, gestionar un carrito de compras y realizar pedidos. Además, incluye un panel de administración completo para gestionar productos, usuarios y visualizar estadísticas de ventas.
+Documentación oficial del proyecto **Compu-Store**, una aplicación web de **comercio electrónico** desarrollada con **React**, enfocada en la venta de productos tecnológicos y la gestión administrativa mediante un dashboard privado.
 
-2. Stack Tecnológico
-Frontend
-React (Vite): Librería principal para la construcción de interfaces de usuario.
-Tailwind CSS: Framework de estilos utilitarios para un diseño moderno y responsivo.
-React Router DOM: Manejo de rutas y navegación (públicas y privadas).
-Chart.js / React-Chartjs-2: Visualización de gráficos estadísticos en el dashboard.
-SweetAlert2: Alertas y notificaciones modales interactivas.
-Backend / Servicios
-Firebase Auth: Gestión de autenticación de usuarios (Registro, Login, Recuperación).
-Firebase Firestore: Base de datos NoSQL para almacenar productos, ventas y perfiles de usuario.
-Firebase Storage: Almacenamiento de imágenes de productos.
-3. Estructura del Proyecto
-La estructura de carpetas en src está organizada de la siguiente manera:
+---
 
-assets: Imágenes e iconos estáticos del sitio.
-components: Componentes reutilizables de la interfaz pública (Header, Footer, Carrito, Cards).
-componentsprivate: Componentes exclusivos del panel de administración (HeaderPrivate, AsidePrivate).
-context: Manejo del estado global (ej. CartContext para el carrito de compras).
-firebase: Configuración e inicialización de Firebase.
-layout: Páginas del panel de administración (Dashboard, Gestión de Productos, Ventas, Perfil).
-pages: Páginas públicas (Inicio, Login, Registro, Catálogo, Nosotros).
-Services: Lógica de negocio y comunicación con Firebase.
-4. Módulos Principales
-A. Módulo Público (Tienda)
+## 📌 Descripción General
+
+**Compu-Store** es una plataforma de e-commerce que permite a los usuarios:
+
+* Navegar por un catálogo de productos tecnológicos
+* Gestionar un carrito de compras
+* Realizar pedidos de forma segura
+
+Además, cuenta con un **panel de administración** completo para:
+
+* Gestión de productos
+* Gestión de usuarios
+* Visualización de estadísticas y ventas
+
+---
+
+## 🧰 Stack Tecnológico
+
+### 🎨 Frontend
+
+* **React (Vite)** – Construcción de interfaces de usuario modernas y rápidas
+* **Tailwind CSS** – Estilos utilitarios para un diseño responsivo
+* **React Router DOM** – Manejo de rutas públicas y privadas
+* **Chart.js / React-Chartjs-2** – Gráficos estadísticos en el dashboard
+* **SweetAlert2** – Alertas y notificaciones modales
+
+### 🔥 Backend / Servicios
+
+* **Firebase Authentication** – Registro, login y recuperación de cuentas
+* **Firebase Firestore** – Base de datos NoSQL (productos, usuarios, ventas)
+* **Firebase Storage** – Almacenamiento de imágenes de productos
+
+---
+
+## 📁 Estructura del Proyecto
+
+La estructura principal dentro de `src/` es la siguiente:
+
+```
+src/
+├── assets/              # Imágenes e iconos
+├── components/          # Componentes públicos reutilizables
+├── componentsprivate/   # Componentes exclusivos del dashboard
+├── context/             # Manejo de estado global (CartContext)
+├── firebase/            # Configuración de Firebase
+├── layout/              # Vistas del panel de administración
+├── pages/               # Páginas públicas
+├── services/            # Lógica de negocio y Firebase
+```
+
+### 📦 Descripción de Carpetas
+
+* **assets**: Recursos estáticos (logos, imágenes)
+* **components**: Header, Footer, Cards, Carrito
+* **componentsprivate**: HeaderPrivate, AsidePrivate
+* **context**: Estado global de la aplicación
+* **firebase**: Inicialización y configuración de Firebase
+* **layout**: Dashboard, gestión y vistas privadas
+* **pages**: Inicio, Login, Registro, Catálogo, Nosotros
+* **services**: Comunicación con Firebase y reglas de negocio
+
+---
+
+## 🧩 Módulos Principales
+
+### 🌐 Módulo Público (Tienda)
+
 Accesible para cualquier visitante.
 
-Inicio (Home.jsx): Carrusel de destacados y categorías principales.
-Catálogo (Productos.jsx): Listado de productos con filtros.
-Detalle de Producto: Vista individual (modal o página) para agregar al carrito.
-Carrito de Compras: Gestión de items seleccionados, cálculo de total y simulación de compra.
-Autenticación:
-Registro: Creación de cuenta con validación de datos.
-Login: Acceso seguro para clientes y administradores.
-B. Módulo Privado (Dashboard / Admin)
-Accesible solo para usuarios autenticados (y con rol de admin para ciertas funciones).
+* **Inicio (Home.jsx)**
 
-Dashboard (Dashboard.jsx):
-Estadísticas en tiempo real (Ventas totales, Ingresos, Productos activos).
-Gráficos visuales de rendimiento.
-Tabla de ventas recientes.
-Gestión de Productos (ProductosAdmin.jsx): CRUD completo (Crear, Leer, Actualizar, Eliminar) de productos.
-Gestión de Usuarios (UsuariosAdmin.jsx): Visualización de usuarios registrados.
-Perfil (Perfil.jsx):
-Visualización de datos de cuenta.
-Edición de información personal.
-Cambio de contraseña.
-Cerrar sesión.
-5. Servicios (Lógica de Negocio)
-La lógica de conexión con Firebase está centralizada en la carpeta Services:
+  * Carrusel de productos destacados
+  * Categorías principales
 
-authServices.js
-:
-registrarUsuario
-: Crea cuenta en Auth y perfil en Firestore.
-iniciarSesion
-: Autentica al usuario.
-cerrarSesion
-: Finaliza la sesión actual.
-actualizarPerfilUsuario
- / 
-actualizarContrasenaUsuario
-: Gestión de cuenta.
-productServices.js
-:
-Funciones para obtener lista de productos, agregar nuevos, editar y eliminar inventario en Firestore.
-saleServices.js
-:
-Registro de nuevas ventas y consulta de historial para reportes.
-6. Configuración e Instalación
-Para ejecutar este proyecto localmente:
+* **Catálogo (Productos.jsx)**
 
-Requisitos: Node.js instalado.
-Instalar dependencias:
+  * Listado de productos
+  * Filtros de búsqueda
+
+* **Detalle de Producto**
+
+  * Vista individual (modal o página)
+  * Agregar productos al carrito
+
+* **Carrito de Compras**
+
+  * Gestión de productos seleccionados
+  * Cálculo de total
+  * Simulación de compra
+
+* **Autenticación**
+
+  * Registro de usuarios
+  * Login seguro
+
+---
+
+### 🔐 Módulo Privado (Dashboard / Admin)
+
+Accesible solo para usuarios autenticados.
+
+* **Dashboard (Dashboard.jsx)**
+
+  * Ventas totales
+  * Ingresos
+  * Productos activos
+  * Gráficos de rendimiento
+  * Ventas recientes
+
+* **Gestión de Productos (ProductosAdmin.jsx)**
+
+  * Crear productos
+  * Editar productos
+  * Eliminar productos
+  * Control de stock
+
+* **Gestión de Usuarios (UsuariosAdmin.jsx)**
+
+  * Visualización de usuarios registrados
+
+* **Perfil (Perfil.jsx)**
+
+  * Ver y editar datos personales
+  * Cambio de contraseña
+  * Cerrar sesión
+
+---
+
+## ⚙️ Servicios (Lógica de Negocio)
+
+La comunicación con Firebase se centraliza en la carpeta `services/`.
+
+### 🔑 authServices.js
+
+* `registrarUsuario` – Crea cuenta en Auth y perfil en Firestore
+* `iniciarSesion` – Autenticación de usuarios
+* `cerrarSesion` – Cierre de sesión
+* `actualizarPerfilUsuario` – Actualización de datos
+* `actualizarContrasenaUsuario` – Cambio de contraseña
+
+### 📦 productServices.js
+
+* Obtener productos
+* Agregar nuevos productos
+* Editar productos
+* Eliminar productos
+
+### 💰 saleServices.js
+
+* Registrar nuevas ventas
+* Consultar historial de ventas
+* Generar reportes
+
+---
+
+## 🚀 Configuración e Instalación
+
+### 📋 Requisitos
+
+* Node.js instalado
+
+### 📥 Instalación
+
+```bash
 npm install
-Configurar Variables de Entorno: Asegúrate de tener el archivo de configuración de Firebase correctamente en 
+```
+
+### 🔐 Variables de Entorno
+
+Configurar Firebase en:
+
+```
 src/firebase/firebase.js
-.
-Ejecutar servidor de desarrollo:
+```
+
+### ▶️ Ejecutar en Desarrollo
+
+```bash
 npm run dev
-Compilar para producción:
+```
+
+### 📦 Compilar para Producción
+
+```bash
 npm run build
-7. Flujos Clave
-Compra: Usuario -> Agrega al Carrito -> Checkout -> Se guarda en colección ventas -> Se actualiza stock en productos.
-Autenticación: Usuario -> Registro -> Se guarda en Auth y colección users -> Acceso a Dashboard.
+```
+
+---
+
+## 🔄 Flujos Clave
+
+### 🛒 Flujo de Compra
+
+```
+Usuario → Agrega al Carrito → Checkout →
+Registro en colección ventas →
+Actualización de stock en productos
+```
+
+### 🔐 Flujo de Autenticación
+
+```
+Usuario → Registro → Firebase Auth →
+Colección users → Acceso a Dashboard
+```
+
+---
+
+## 📄 Licencia
+
+Proyecto desarrollado con fines educativos y académicos.
+
+---
+
+✨ **Compu-Store** – Plataforma moderna de comercio electrónico con React y Firebase
